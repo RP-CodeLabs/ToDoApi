@@ -30,22 +30,10 @@ namespace TodoApi.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<TodoItem> GetAll()
-        {
-            return _todoContext.TodoItems.ToList();
-        }
+        public IEnumerable<TodoItem> GetAll() => _todoContext.TodoItems.ToList(); 
 
         [HttpGet("{id}", Name="GetTodo")]
-        public IActionResult GetById(long id)
-        {
-            return _getTodoItemCommand.Value.Execute(id);
-            //var todo = _todoContext.TodoItems.FirstOrDefault(x => x.Id == id);
-            //if (todo == null)
-            //{
-            //    return NotFound();
-            //}
-            //return new ObjectResult(todo);
-        }
+        public IActionResult GetById(long id) => _getTodoItemCommand.Value.Execute(id);
 
         [HttpGet("{id1}/{id2}")]
         public IActionResult GetByIds(long id1, long id2)
@@ -59,50 +47,12 @@ namespace TodoApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] TodoItem item)
-        {
-            return _postTodoItemCommand.Value.Execute(item);
-            //if (item == null)
-            //{
-            //    return BadRequest();
-            //}
-            //_todoContext.TodoItems.Add(item);
-            //_todoContext.SaveChanges();
-            //return CreatedAtRoute("GetTodo", new {id = item.Id}, item);
-        }
+        public IActionResult Create([FromBody] TodoItem item) => _postTodoItemCommand.Value.Execute(item);
 
         [HttpPut("{id}")]
-        public IActionResult Update(long id, [FromBody] TodoItem item)
-        {
-            return _putTodoItemCommand.Value.Execute(id, item);
-            //if (item == null || item.Id == id)
-            //{
-            //    return BadRequest();
-            //}
-            //var todo = _todoContext.TodoItems.FirstOrDefault(t => t.Id == id);
-            //if (todo == null)
-            //{
-            //    return NotFound();
-            //}
-            //todo.IsComplete = item.IsComplete;
-            //todo.Name = item.Name;
-            //_todoContext.TodoItems.Update(todo);
-            //_todoContext.SaveChanges();
-            //return new NoContentResult();
-        }
+        public IActionResult Update(long id, [FromBody] TodoItem item) => _putTodoItemCommand.Value.Execute(id, item);
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(long id)
-        {
-            return _deleteTodoItemCommand.Value.Execute(id);
-            //var todo = _todoContext.TodoItems.FirstOrDefault(t => t.Id == id);
-            //if (todo == null)
-            //{
-            //    return NotFound();
-            //}
-            //_todoContext.Remove(todo);
-            //_todoContext.SaveChanges();
-            //return new NoContentResult();
-        }
+        public IActionResult Delete(long id) => _deleteTodoItemCommand.Value.Execute(id);
     }
 }
