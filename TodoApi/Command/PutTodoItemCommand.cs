@@ -9,10 +9,7 @@ namespace TodoApi.Command
     {
         private readonly TodoContext _context;
 
-        public PutTodoItemCommand(TodoContext context)
-        {
-            _context = context;
-        }
+        public PutTodoItemCommand(TodoContext context) => _context = context; 
 
         public IActionResult Execute(long id, TodoItem item)
         {

@@ -8,10 +8,7 @@ namespace TodoApi.Command
     {
         private readonly TodoContext _context;
 
-        public DeleteTodoItemCommand(TodoContext context)
-        {
-            _context = context;
-        }
+        public DeleteTodoItemCommand(TodoContext context) => _context = context; 
 
         public IActionResult Execute(long id)
         {
